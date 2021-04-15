@@ -1,4 +1,8 @@
 <div class="header-nav">
-    <div><input type="text" placeholder="Buscar"></div>
-    <div>13123123</div>
+    <div><input type="text" 
+        placeholder="Buscar"
+        #myInput class="input-form" 
+        (keyup.enter)="doSearch(myInput.value)">
+    </div>
+    <div>Jose Alberto</div>
 </div>

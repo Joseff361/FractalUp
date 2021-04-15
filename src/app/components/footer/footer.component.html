@@ -1,0 +1,38 @@
+<div *ngIf="imageUrl" class="row">
+  <!-- IMAGE -->
+  <div class="col-md-1 my-auto d-none d-md-block image-container">
+    <img src="{{imageUrl}}" alt="" (click)="paused() ? play() : pause()"> 
+  </div>
+
+  <!-- INFO -->
+  <div class="col-md-2 my-auto d-none d-md-block" style="color: white;">
+      <p style="font-size: 14px;"><b>Cancion</b></p>
+      <p style="font-size: 12px;">Artista - Album</p>
+  </div>
+
+  <!-- BUTTONS -->
+  <div class="col-md-7 col-6 mx-auto my-auto text-center">
+    <audio #audioElement src="{{audioUrl}}"></audio>
+    <div class="buttonss">
+      <h2><i class="fas fa-step-backward" (click)="getTrack('atras')"></i></h2>
+      <h2 (click)="paused() ? play() : pause()" 
+        *ngIf="paused()" class="icon-size-30"><i class="fas fa-play"></i></h2>
+      <h2 (click)="paused() ? play() : pause()" 
+        *ngIf="!paused()" class="icon-size-30"><i class="fas fa-pause"></i></h2>
+      <h2><i class="fas fa-step-forward" (click)="getTrack('siguiente')"></i></h2>
+    </div>
+  </div>
+
+  <!-- VOLUME -->
+  <div class="col-md-1 col-4 my-auto">
+    <input type="range" min="0" max="1" value="0.5" step="0.1" 
+          #myVolume 
+          (change)="changeVolume(myVolume.value)"
+          class="form-range">
+  </div>
+
+  <!-- MUTE -->
+  <div class="col-md-1 col-2 my-auto text-center">
+    <a  (click)="changeVolume(0)"><h1><i class="fas fa-volume-off" [style]="myCustomStyle"></i></h1></a>
+  </div>
+</div>

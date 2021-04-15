@@ -1,0 +1,18 @@
+img{
+    width: 100%;
+}
+
+.image-container{
+    padding: 0px 0px;
+}
+
+.buttonss{
+    display: flex;
+    justify-content: center;
+    color: white;
+}
+
+.buttonss h2{
+    margin: 0px 20px;
+}
+

@@ -7,13 +7,15 @@ import { SearchComponent } from './components/search/search.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { CatalogueComponent } from './components/catalogue/catalogue.component';
 import { HttpClientModule } from '@angular/common/http';
+import { FooterComponent } from './components/footer/footer.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     SearchComponent,
     SidebarComponent,
-    CatalogueComponent
+    CatalogueComponent,
+    FooterComponent,
   ],
   imports: [
     BrowserModule,

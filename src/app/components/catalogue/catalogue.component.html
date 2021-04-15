@@ -1,27 +1,28 @@
-<input #MyInput (keyup.enter)="doSearch(MyInput.value)" type="text">
-
-<div class="row my-4" *ngIf="songs">
-    <div class="col-md-3">
-        <img class="img-main" src="{{songs[0].album.cover_medium}}" alt="">
+<div class="row my-4" *ngIf="songs && songs[0]">
+    <div class="col-md-3 nopadding">
+        <img class="img-main" src="{{songs[0].album.cover_big}}" alt="">
     </div>
-    <div class="col-md-9">
-        <h3>{{songs[0].artist.name}}</h3>
-        <p>{{songs[0].artist.name}} &nbsp;<span>{{songs[0].rank}} minutos de duracion</span></p>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla dapibus gravida lorem, vel pretium nisl commodo vel. Curabitur ultricies risus pellentesque dictum efficitur. Aenean porttitor interdum commodo.</p>
-        <button class="play-button">Reproducir</button>
-        <button class="follow-button">Seguir</button>
-        <audio controls>
-            <source src="{{songs[0].preview}}" type="audio/mp3">
-        </audio>
+    <div class="col-md-9 intro" [style]="background">
+        <div class="secondary-content py-3 px-3">
+            <h3><b>{{songs[0].artist.name}}</b></h3>
+            <p> Lo mejor de {{songs[0].artist.name}} &nbsp;
+                <span  class="mini-span">{{songs[0].rank}} minutos de duracion</span></p>
+            <p style="font-size: 12px;">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla dapibus gravida lorem, vel pretium nisl commodo vel. Curabitur ultricies risus pellentesque dictum efficitur. Aenean porttitor interdum commodo.</p>
+            <button (click)="sendSong(songs[0])" class="play-button">Reproducir</button>
+            <button class="follow-button">Seguir</button>
+        </div>
     </div>
 </div>
 
 <p class="big-title"><b>Resultados</b></p>
 
-<div class="row mt-2">
-    <div *ngFor="let theSong of songs" class="col-md-2 item my-3">
-        <img class="img-item" src="{{theSong.album.cover_medium}}" alt="">
-        <small class="album"><b>{{theSong.album.title}}</b></small>
-        <p class="title">{{theSong.title}}</p>
+<div class="row mt-3 mb-5">
+    <div *ngFor="let theSong of songs" class="col-md-4 col-lg-3">
+        <a (click)="sendSong(theSong)"><img class="img-item" src="{{theSong.album.cover_big}}" alt=""></a>
+        <p class="album"><b>{{theSong.album.title}}</b> <br>
+        <small class="title">{{theSong.title}}</small></p>
     </div>
 </div>
+
+
+<div class="row mb-5"></div>

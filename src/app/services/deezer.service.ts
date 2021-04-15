@@ -17,6 +17,10 @@ export class DeezerService {
   ) { }
 
   getCatalogueBySongOrArtist(keyword: string): Observable<Deezer>{
-    return this.http.get<Deezer>(`${this.baseUrl}/search?q=${keyword}&limit=10`, { 'headers': myHeaders });
+    return this.http.get<Deezer>(`${this.baseUrl}/search?q=${keyword}&limit=12`, { 'headers': myHeaders });
+  }
+
+  getTrack(idTrack: number): Observable<any>{
+    return this.http.get<any>(`${this.baseUrl}/album/${idTrack}`, { 'headers': myHeaders });
   }
 }

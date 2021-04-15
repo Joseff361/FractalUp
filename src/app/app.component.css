@@ -16,4 +16,32 @@
     width: calc(100% - var(--width-of-sidebar));
     position: fixed;
     background-color: white;
+    z-index: 2;
+}
+
+
+footer{
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    /* height: var(--footer-size); */
+    background-color: #EB5757;
+}
+
+/*SIDEBAR HIDDEN*/
+/* 768px = sm in bootstrap */
+@media screen and (max-width:767px){ 
+    .page-container{
+        position: relative;
+        left:0;
+        width: 100%;
+    }
+    
+    .header-nav{
+        width: 100%;
+    }
+
+    .container-fluid{
+        display: block;
+    }
 }
