@@ -1,0 +1,19 @@
+.sidebar{
+    width: var(--width-of-sidebar);
+    height: 100%;
+    position: fixed;
+    background-color: var(--Dark-Red-Secondary);
+    color: white;
+}
+
+.logo{
+    text-align: center;
+}
+
+img{
+    width: 250px;
+    height: 59px;
+    left: 40px;
+    top: 50px;
+    margin-top: 50px;
+}

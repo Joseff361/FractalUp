@@ -1,1 +1,14 @@
 /* You can add global styles to this file, and also import other style files */
+:root{
+    --width-of-sidebar: 330px;
+    --Dark-Red-Secondary: #662323; 
+    
+
+    --nabvar-size: 96px;
+    --Red-principal: #E86060;
+}
+
+body{
+    font-family: Quicksand;
+    font-style: normal;
+}

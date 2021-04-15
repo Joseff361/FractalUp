@@ -1,0 +1,27 @@
+<input #MyInput (keyup.enter)="doSearch(MyInput.value)" type="text">
+
+<div class="row my-4" *ngIf="songs">
+    <div class="col-md-3">
+        <img class="img-main" src="{{songs[0].album.cover_medium}}" alt="">
+    </div>
+    <div class="col-md-9">
+        <h3>{{songs[0].artist.name}}</h3>
+        <p>{{songs[0].artist.name}} &nbsp;<span>{{songs[0].rank}} minutos de duracion</span></p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla dapibus gravida lorem, vel pretium nisl commodo vel. Curabitur ultricies risus pellentesque dictum efficitur. Aenean porttitor interdum commodo.</p>
+        <button class="play-button">Reproducir</button>
+        <button class="follow-button">Seguir</button>
+        <audio controls>
+            <source src="{{songs[0].preview}}" type="audio/mp3">
+        </audio>
+    </div>
+</div>
+
+<p class="big-title"><b>Resultados</b></p>
+
+<div class="row mt-2">
+    <div *ngFor="let theSong of songs" class="col-md-2 item my-3">
+        <img class="img-item" src="{{theSong.album.cover_medium}}" alt="">
+        <small class="album"><b>{{theSong.album.title}}</b></small>
+        <p class="title">{{theSong.title}}</p>
+    </div>
+</div>

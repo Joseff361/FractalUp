@@ -1,0 +1,19 @@
+.page-container{
+    width: calc(100% - var(--width-of-sidebar));
+    position: relative;
+    left: var(--width-of-sidebar);
+    display:flex; 
+    flex-direction:column; 
+    min-height: 100vh;
+}
+
+.main-content{
+    margin-top: var( --nabvar-size);
+    padding: 0px 40px;
+}
+
+.header-nav{
+    width: calc(100% - var(--width-of-sidebar));
+    position: fixed;
+    background-color: white;
+}

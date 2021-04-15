@@ -1,0 +1,15 @@
+.header-nav{
+    display: flex;
+    justify-content: space-between;
+    padding: 30px 40px;
+}
+
+input{
+    width: 524px;
+    height: 36px;
+    outline: none;
+    border-radius: 100px;
+    border: 1px solid #828282;
+    padding-left: 16px;
+}
+
