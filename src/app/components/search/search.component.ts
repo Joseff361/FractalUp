@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { DeezerService } from 'src/app/services/deezer.service';
 
 declare var DZ;
 
@@ -16,7 +17,8 @@ export class SearchComponent implements OnInit {
   LoginStatus: string = 'login';
 
   constructor(
-    private router: Router
+    private router: Router,
+    private deezerService: DeezerService
   ) { }
 
   ngOnInit(): void {
@@ -35,11 +37,6 @@ export class SearchComponent implements OnInit {
 
   khe(): void{
 
-    let obj = { name: "John", age: 30, city: "New York" };
-
-    document.getElementById("trick").setAttribute('value', JSON.stringify(obj));
-    document.getElementById("trick").click();
-
     DZ.login(function(response) {
       if (response.authResponse) {
 
@@ -51,10 +48,10 @@ export class SearchComponent implements OnInit {
           });
 
 
-          DZ.api('user/me/charts/playlists'), function(response) {
-            document.getElementById("trick").setAttribute('value', JSON.stringify(response));
-            document.getElementById("trick").click();
-          };
+          // DZ.api('user/me/charts/playlists'), function(response) {
+          //   document.getElementById("trick").setAttribute('value', JSON.stringify(response));
+          //   document.getElementById("trick").click();
+          // };
 
 
       } else {
@@ -67,4 +64,12 @@ export class SearchComponent implements OnInit {
     console.log(JSON.parse(value));
   }
 
+  keloke(){
+      this.deezerService.getAllMyTracks()
+        .subscribe( data => {
+          console.log(data);
+        }, err => {
+          console.log(err)
+        })
+  }
 }
