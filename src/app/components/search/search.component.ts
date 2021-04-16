@@ -13,7 +13,7 @@ declare var DZ;
 
 export class SearchComponent implements OnInit {
 
-  LoginStatus: string = 'login';
+  // LoginStatus: string = 'login';
 
   constructor(
     private router: Router
@@ -39,11 +39,11 @@ export class SearchComponent implements OnInit {
       if (response.authResponse) {
 
           console.log('Welcome!  Fetching your information.... ');
-          DZ.api('/user/me/playlists', function(response) {
-              console.log(response)
-              console.log('Good to see you, ' + response.user.name + '.');
+          DZ.api('/user/me', function(response) {
+              console.log('Good to see you, ' + response.name + '.');
+
               // SETING VALUES
-              document.getElementById("myButton").textContent = response.user.name;
+              document.getElementById("myButton").textContent = response.name;
               document.getElementById("trick").setAttribute('value', JSON.stringify(response));
               document.getElementById("trick").click();
 
@@ -57,5 +57,10 @@ export class SearchComponent implements OnInit {
 
   myOwnTracks(value: string){
     console.log(JSON.parse(value));
+  }
+
+  goOut(){
+    DZ.logout();
+    document.getElementById("myButton").textContent = "Login";
   }
 }

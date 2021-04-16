@@ -1,6 +1,7 @@
 .header-nav{
     display: flex;
     justify-content: space-between;
+    align-items: center;
     padding: 30px 40px;
     width: 100%;
 }
@@ -24,6 +25,9 @@ button{
     font-size: 14px;
 }
 
+a{
+    cursor: pointer;
+}
 
 /* 768px = sm in bootstrap */
 @media screen and (max-width:992px){ 

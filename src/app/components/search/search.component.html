@@ -5,5 +5,8 @@
         (keyup.enter)="doSearch(myInput.value)">
     </div>
     <div><button id="myButton" (click)="khe()">Login</button></div>
-    <input (click)="myOwnTracks($event.target.value)" id="trick" type="hidden" />
+    <h3><a (click)="goOut()"><i class="fas fa-sign-out-alt" style="color: #E86060"></i></a></h3>
 </div>
+
+
+<input (click)="myOwnTracks($event.target.value)" id="trick" type="hidden" />

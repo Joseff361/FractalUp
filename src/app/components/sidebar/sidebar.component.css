@@ -17,3 +17,22 @@ img{
     top: 50px;
     margin-top: 50px;
 }
+p{
+    font-size: 22px;
+    font-weight: bold;
+}
+
+ul {
+    list-style-type: none;
+    font-size: 16px;
+    cursor: pointer;
+    margin-top: 8px;
+}
+
+li:hover{
+    color: #E86060;
+}
+
+.navegation-bar{
+    padding-left: 20px;
+}
