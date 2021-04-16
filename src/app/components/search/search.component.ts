@@ -39,7 +39,8 @@ export class SearchComponent implements OnInit {
       if (response.authResponse) {
 
           console.log('Welcome!  Fetching your information.... ');
-          DZ.api('/user/me/charts/playlists', function(response) {
+          DZ.api('/user/me/playlists', function(response) {
+              console.log(response)
               console.log('Good to see you, ' + response.user.name + '.');
               // SETING VALUES
               document.getElementById("myButton").textContent = response.user.name;
