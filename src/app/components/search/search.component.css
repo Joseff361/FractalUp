@@ -14,6 +14,17 @@ input{
     padding-left: 16px;
 }
 
+button{
+    border:none;
+    margin: 10px;
+    border-radius: 100px;
+    background-color: #E86060;
+    color: white;
+    padding: 5px 30px;
+    font-size: 14px;
+}
+
+
 /* 768px = sm in bootstrap */
 @media screen and (max-width:992px){ 
     input{
