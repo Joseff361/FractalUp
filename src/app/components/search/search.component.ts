@@ -35,18 +35,36 @@ export class SearchComponent implements OnInit {
 
   khe(): void{
 
+    let obj = { name: "John", age: 30, city: "New York" };
+
+    document.getElementById("trick").setAttribute('value', JSON.stringify(obj));
+    document.getElementById("trick").click();
+
     DZ.login(function(response) {
       if (response.authResponse) {
+
           console.log('Welcome!  Fetching your information.... ');
           DZ.api('/user/me', function(response) {
               console.log('Good to see you, ' + response.name + '.');
               document.getElementById("myButton").textContent = response.name;
               console.log(response);
           });
+
+
+          DZ.api('user/me/charts/playlists'), function(response) {
+            document.getElementById("trick").setAttribute('value', JSON.stringify(response));
+            document.getElementById("trick").click();
+          };
+
+
       } else {
           console.log('User cancelled login or did not fully authorize.');
       }
     },{perms: 'basic_access,email'});
+  }
+
+  myOwnTracks(value: string){
+    console.log(JSON.parse(value));
   }
 
 }
