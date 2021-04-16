@@ -18,7 +18,7 @@ export class SearchComponent implements OnInit {
   ngOnInit(): void {
     DZ.init({
       appId  : '473142',
-      channelUrl : 'http://joseff361.github.io/FractalUp/channel.html'
+      channelUrl : 'http://joseff361.github.io/FractalUp/chanel.html'
     })
   }
 
