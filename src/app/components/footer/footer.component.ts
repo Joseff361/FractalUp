@@ -1,4 +1,3 @@
-import { AfterViewInit } from '@angular/core';
 import { Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { Song } from 'src/app/common/Song';
@@ -11,7 +10,7 @@ import { MessageService } from 'src/app/services/message.service';
   templateUrl: './footer.component.html',
   styleUrls: ['./footer.component.css']
 })
-export class FooterComponent implements OnInit, AfterViewInit {
+export class FooterComponent implements OnInit {
 
   // MESSAGE FROM SERVICE
   song: Song;
@@ -25,7 +24,7 @@ export class FooterComponent implements OnInit, AfterViewInit {
   trackIndex: number = 0;
   
   // THE REAL AUDIO
-  @ViewChild('audioElement', { static: false }) public audioElement:  ElementRef;
+  @ViewChild('audioElement', { static: false }) audioElement:  ElementRef;
   private audio: HTMLMediaElement;
 
   //MUTE
@@ -46,13 +45,25 @@ export class FooterComponent implements OnInit, AfterViewInit {
         if(message != undefined){
           this.imageUrl = message.data.album.cover_medium;
           this.audioUrl = message.data.preview;
-          this.trackId = message.data.album.id;
+          this.trackId =  message.data.album.id;
+          this.loadData();
         }
       } else {
         this.song = null;
       }
     });    
   }
+
+   // ASING VALUES BEFORE RENDERING
+    loadData(): void{
+      this.audio = this.audioElement.nativeElement;
+      if (this.audio) {
+        this.audio.volume = 0.8; // 1 IS THE LOUDEST
+        this.audio.autoplay = true;
+      }
+    }
+  
+  
 
   
   paused(): boolean {
@@ -77,17 +88,6 @@ export class FooterComponent implements OnInit, AfterViewInit {
     }
   }
 
-  // ASING VALUES BEFORE RENDERING
-  ngAfterViewInit(): void {
-    setTimeout(() => {
-      this.audio = this.audioElement.nativeElement;
-      if (this.audio) {
-        this.audio.volume = 1; // 1 IS THE LOUDEST
-        this.audio.autoplay = true;
-      }
-    }, 2500);
-  
-  }
 
   changeVolume(volume: number){
     if (this.audio) {

@@ -63,4 +63,5 @@ button{
 }
 .img-item{
     width: 100%;
+    cursor:pointer;
 }

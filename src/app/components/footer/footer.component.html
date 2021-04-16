@@ -1,3 +1,5 @@
+<audio #audioElement src="{{audioUrl}}"></audio>
+
 <div *ngIf="imageUrl" class="row">
   <!-- IMAGE -->
   <div class="col-md-1 my-auto d-none d-md-block image-container">
@@ -12,7 +14,6 @@
 
   <!-- BUTTONS -->
   <div class="col-md-7 col-6 mx-auto my-auto text-center">
-    <audio #audioElement src="{{audioUrl}}"></audio>
     <div class="buttonss">
       <h2><i class="fas fa-step-backward" (click)="getTrack('atras')"></i></h2>
       <h2 (click)="paused() ? play() : pause()" 
