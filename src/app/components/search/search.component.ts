@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { DeezerService } from 'src/app/services/deezer.service';
 
 declare var DZ;
 
@@ -17,8 +16,7 @@ export class SearchComponent implements OnInit {
   LoginStatus: string = 'login';
 
   constructor(
-    private router: Router,
-    private deezerService: DeezerService
+    private router: Router
   ) { }
 
   ngOnInit(): void {
@@ -41,19 +39,15 @@ export class SearchComponent implements OnInit {
       if (response.authResponse) {
 
           console.log('Welcome!  Fetching your information.... ');
-          DZ.api('/user/me', function(response) {
-              console.log('Good to see you, ' + response.name + '.');
-              document.getElementById("myButton").textContent = response.name;
+          DZ.api('/user/me/charts/playlists', function(response) {
+              console.log('Good to see you, ' + response.user.name + '.');
+              // SETING VALUES
+              document.getElementById("myButton").textContent = response.user.name;
+              document.getElementById("trick").setAttribute('value', JSON.stringify(response));
+              document.getElementById("trick").click();
+
               console.log(response);
           });
-
-
-          // DZ.api('user/me/charts/playlists'), function(response) {
-          //   document.getElementById("trick").setAttribute('value', JSON.stringify(response));
-          //   document.getElementById("trick").click();
-          // };
-
-
       } else {
           console.log('User cancelled login or did not fully authorize.');
       }
@@ -62,14 +56,5 @@ export class SearchComponent implements OnInit {
 
   myOwnTracks(value: string){
     console.log(JSON.parse(value));
-  }
-
-  keloke(){
-      this.deezerService.getAllMyTracks()
-        .subscribe( data => {
-          console.log(data);
-        }, err => {
-          console.log(err)
-        })
   }
 }

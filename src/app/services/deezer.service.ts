@@ -23,9 +23,4 @@ export class DeezerService {
   getTrack(idTrack: number): Observable<any>{
     return this.http.get<any>(`${this.baseUrl}/album/${idTrack}`, { 'headers': myHeaders });
   }
-
-
-  getAllMyTracks(): Observable<any>{
-    return this.http.get<any>('https://api.deezer.com/user/me/charts/playlists');
-  }
 }
