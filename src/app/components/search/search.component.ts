@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
+declare var DZ;
+
+
 @Component({
   selector: 'app-search',
   templateUrl: './search.component.html',
@@ -13,12 +16,30 @@ export class SearchComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    DZ.init({
+      appId  : '473142',
+      channelUrl : 'https://developers.deezer.com/examples/channel.php'
+    })
   }
 
   doSearch(value: string): void{
     if(value != null && value != ''){
       this.router.navigateByUrl(`/search/${value}`);
      }
+  }
+
+
+  khe():void{
+    DZ.login(function(response) {
+      if (response.authResponse) {
+          console.log('Welcome!  Fetching your information.... ');
+          DZ.api('/user/me', function(response) {
+              console.log('Good to see you, ' + response.name + '.');
+          });
+      } else {
+          console.log('User cancelled login or did not fully authorize.');
+      }
+    },{perms: 'basic_access,email'});
   }
 
 }
