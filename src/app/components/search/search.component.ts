@@ -57,6 +57,7 @@ export class SearchComponent implements OnInit {
 
   myOwnTracks(value: string){
     console.log(JSON.parse(value));
+    this.router.navigateByUrl(`/search/edd sheeran`);
   }
 
   goOut(){
